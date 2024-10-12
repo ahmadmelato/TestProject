@@ -14,9 +14,8 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Read More</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Sign Up</a></li>
+                <li><a href="/login-account">Login</a></li>
+                <li><a href="/create-account">Singup</a></li>
             </ul>
         </nav>
     </header>
