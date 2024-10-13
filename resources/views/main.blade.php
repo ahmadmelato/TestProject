@@ -119,7 +119,7 @@ footer {
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/login-account">Login</a></li>
-                <li><a href="/create-account">Singup</a></li>
+                <li><a href="/create-account">SignUp</a></li>
             </ul>
             </ul>
         </nav>
