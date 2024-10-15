@@ -126,7 +126,8 @@
         </nav>
     </header>
 
-    <main>    
+    <main>
+    
         <div class="container mt-5">
         <label for="table">Please press the save button after completing the test. If you fail to save the test, it will be cancelled.</label>
             <table id="table" class="table">
@@ -191,6 +192,9 @@
     </script>
 
     </div>
+    <script>
+    alert('Please press the save button after completing the test. If you fail to save the test, it will be cancelled');
+    </script>
     </main>
 
     <footer>
