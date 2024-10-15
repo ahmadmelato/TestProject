@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Dashboard</title>
+    <title>Test Student Result</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
 
@@ -118,9 +118,6 @@ footer {
         <nav>
             <ul>
                 <li>
-                    <a href="{{ route('tests.create') }}">New Secure Test</a>
-                </li>
-                <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -150,27 +147,18 @@ footer {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Student Name</th>
+                    <th>Mark</th>
                     <th>Created At</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tests as $test)
+                @foreach ($testresult as $test)
                 <tr>
                     <td>{{ $test->id }}</td>
-                    <td>{{ $test->name }}</td>
+                    <td>{{ $test->user->name }}</td>
+                    <td>{{ $test->mark }}</td>
                     <td>{{ $test->created_at->format('Y-m-d') }}</td>
-                    <td>
-                        <a href="{{ route('tests.questions', $test->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('tests.destroy', $test->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            <a href="/dashboard-student/{{$test->id}}" class="btn btn-success" target="_blank">Review</a>  
-                            <a href="{{ route('tests.studentresult', $test->id) }}" class="btn btn-success" target="_blank">Student Result</a>  
-                        </form>
-                    </td>
                 </tr>
                 @endforeach
             </tbody>

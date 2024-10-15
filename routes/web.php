@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard-teacher', [TestController::class, 'indexByTeacher'])->name('dashboard.teacher');
     Route::get('/tests/{id}/edit', [TestController::class, 'edit'])->name('tests.edit');
     Route::get('/tests/{id}/questions', [TestController::class, 'showQuestions'])->name('tests.questions');
+    Route::get('/tests/{id}/student-result', [TestController::class, 'showStudentResult'])->name('tests.studentresult');
     
     Route::get('/tests/{id}/questions/create-question', [TestController::class, 'createquestion'])->name('tests.createquestion');
     Route::post('/tests/store-question', [TestController::class, 'storeQuestion'])->name('tests.storeQuestion');

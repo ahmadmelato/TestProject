@@ -128,7 +128,8 @@
 
     <main>    
         <div class="container mt-5">
-            <table class="table">
+        <label for="table">Please press the save button after completing the test. If you fail to save the test, it will be cancelled.</label>
+            <table id="table" class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -159,9 +160,36 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+            </div>
         </div>
 
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const selectedAnswers = {};
+            const questions = @json($questions); // Use Blade to inject PHP array as JSON
+            console.log('Questions:', 'asdsa;dsad');
+            alert('Data saved successfully!');
+            questions.forEach(question => {
+                const selected = document.querySelector(`input[name="question_${question.id}"]:checked`);
+                if (selected) {
+                    selectedAnswers[question.id] = selected.value;
+                }
+            });
+
+            if (Object.keys(selectedAnswers).length > 0) {
+                console.log('Selected Answers:', selectedAnswers);
+                alert('Data saved successfully!'); // Placeholder action
+                // Here you could send selectedAnswers to your server via AJAX
+            } else {
+                alert('Please select answers for the questions.');
+            }
+        });
+    </script>
+
     </div>
     </main>
 

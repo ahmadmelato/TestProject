@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 use App\Models\Question;
+use App\Models\TestResult;
 use App\Models\Answer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,15 @@ class TestController extends Controller
         return view('testQuestions', [
             'id' => $id,
             'questions' => $questions ?? [] // Ensure questions is an array
+        ]);
+    }
+
+    public function showStudentResult($id)
+    {
+        $testresult = TestResult::where('test_id', $id)->get(); // Get the questions related to this test
+        return view('testResult', [
+            'id' => $id,
+            'testresult' => $testresult ?? [] // Ensure questions is an array
         ]);
     }
 
