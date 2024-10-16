@@ -122,6 +122,17 @@ class TestController extends Controller
         return redirect()->route('questions.answer',['id' => $request['id'],'question_id' => $request['question_id']])->with('success', 'successfully!');
     }
 
+    public function storeTestFrom(Request $request)
+    {
+        $validatedData['test_id'] = $request['id'];
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['mark'] = $request['mark'] ?? rand(0, 100);
+        
+        TestResult::create($validatedData); // Save the new test
+
+        return redirect()->route('dashboard.student')->with('success', 'successfully!');
+    }
+
     public function destroyQuestion($id,$test_id)
     {   
         $question = Question::findOrFail($id);

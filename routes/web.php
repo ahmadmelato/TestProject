@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/tests/{id}/questions/{question_id}/answer/{answer_id}', [TestController::class, 'destroyAnswer'])->name('answer.destroy');
 
     Route::get('/dashboard-student/{id}', [TestController::class, 'showTestQuestions'])->name('student.tests');
+
+    Route::get('/dashboard-student/{id}/{user_id}', [TestController::class, 'storeTestFrom'])->name('student.storeTestFrom');
 });
 
 Route::get('/create-account', function () {

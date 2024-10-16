@@ -129,7 +129,7 @@
     <main>
     
         <div class="container mt-5">
-        <label for="table">Please press the save button after completing the test. If you fail to save the test, it will be cancelled.</label>
+        <label for="table">When you exit the test, your test will be cancelled.</label>
             <table id="table" class="table">
                 <thead>
                     <tr>
@@ -162,7 +162,8 @@
                 </tbody>
             </table>
             <div class="mb-3">
-                <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+            <a href="{{ route('student.storeTestFrom', ['id' => $id,'user_id' => $id]) }}"type="button" class="btn btn-primary" id="saveBtn">Save</a>
+                
             </div>
         </div>
 
@@ -171,9 +172,7 @@
     <script>
         document.getElementById('saveBtn').addEventListener('click', function() {
             const selectedAnswers = {};
-            const questions = @json($questions); // Use Blade to inject PHP array as JSON
-            console.log('Questions:', 'asdsa;dsad');
-            alert('Data saved successfully!');
+            const questions = @json($questions); // Use Blade to inject PHP array as JSON            
             questions.forEach(question => {
                 const selected = document.querySelector(`input[name="question_${question.id}"]:checked`);
                 if (selected) {
@@ -181,9 +180,12 @@
                 }
             });
 
+            
+
             if (Object.keys(selectedAnswers).length > 0) {
                 console.log('Selected Answers:', selectedAnswers);
                 alert('Data saved successfully!'); // Placeholder action
+                
                 // Here you could send selectedAnswers to your server via AJAX
             } else {
                 alert('Please select answers for the questions.');
@@ -193,7 +195,7 @@
 
     </div>
     <script>
-    alert('Please press the save button after completing the test. If you fail to save the test, it will be cancelled');
+    alert('When you exit the test, your test will be cancelled.');
     </script>
     </main>
 
